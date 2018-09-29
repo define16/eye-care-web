@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+{% load staticfiles %}
+   <head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="{% static 'js/html5shiv.js' %}"></script><![endif]-->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/skel.min.js' %}"></script>
+		<script src="{% static 'js/skel-layers.min.js' %}"></script>
+		<script src="{% static 'js/init.js' %}"></script>
+		
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+ <script src="{% static 'js/bootstrap.js' %}"></script>
+		<noscript>
+			<link rel="stylesheet" href="{% static 'css/skel.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style-xlarge.css' %}" />
+			
+		</noscript>
+	</head>
+	<header id="header" class="skel-layers-fixed">
+				<h1><a href="#"></a>Twenty</h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="{% url 'index' %} ">홈</a></li>
+						<li><a href="{% url 'info' %} ">소개</a></li>
+						<li><a href="{% url 'Login' %}">마이 페이지</a></li>
+						<li><a href="{% url 'boderView' %}">게시판</a></li>
+						<li><a href="{% url 'Login' %}" class="button special">로그인</a></li>
+					</ul>
+				</nav>
+			</header>
+	<div class="container">
+		<form method="post" action="./userRegister">
+			<table class="table table-bordered table-hover"
+				style="text-align: center; border: 1px solid #dddddd">
+				<thead>
+					<tr>
+						<th colspan="3"><h4>회원등록양식</h4></th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="width: 110px;"><h5>아이디</h5></td>
+						<td><input class="form-control" type="text" id="userID"
+							name="userID" maxlength="20" placeholder="아이디를 입력하세요"></td>
+						<td style="width: 110px;"><button class="btn btn-primary"
+								onclick="registerCheckFunction();" type="button">중복체크</button></td>
+					</tr>
+					<tr>
+						<td style="width: 110px;"><h5>비밀번호</h5></td>
+						<td colspan="2"><input onkeyup="passwordCheckFunction();"
+							class="form-control" id="userPassword1" type="password"
+							name="userPassword1" maxlength="20" placeholder="비밀번호를 입력하세요"></td>
+
+					</tr>
+					<tr>
+						<td style="width: 110px;"><h5>비밀번호확인</h5></td>
+						<td colspan="2"><input onkeyup="passwordCheckFunction();"
+							class="form-control" id="userPassword2" type="password"
+							name="userPassword2" maxlength="20" placeholder="비밀번호확인을 입력하세요"></td>
+
+					</tr>
+					<tr>
+						<td style="width: 110px;"><h5>이름</h5></td>
+						<td colspan="2"><input onkeyup="passwordCheckFunction();"
+							class="form-control" id="userName" type="text" name="userName"
+							maxlength="20" placeholder="이름을 입력하세요"></td>
+
+					</tr>
+					<tr>
+						<td style="width: 110px;"><h5>나이</h5></td>
+						<td colspan="2"><input onkeyup="passwordCheckFunction();"
+							class="form-control" id="userAge" type="number" name="userAge"
+							maxlength="20" placeholder="나이를 입력하세요"></td>
+
+					</tr>
+					<tr>
+						<td style="width: 110px;"><h5>성별</h5></td>
+						<td colspan="2">
+							<div class="from-group"
+								style="text-align: center; margin: 0 auto;">
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-primary active"> <input
+										type="radio" name="userGender" autocomplete="off" value="남자"
+										checked>남자
+									</label> <label class="btn btn-primary"> <input type="radio"
+										name="userGender" autocomplete="off" value="여자">여자
+									</label>
+								</div>
+							</div>
+						</td>
+
+					</tr>
+					<tr>
+						<td style="width: 110px;"><h5>이메일</h5></td>
+						<td colspan="2"><input onkeyup="passwordCheckFunction();"
+							class="form-control" id="userEmail" type="email" name="userEmail"
+							maxlength="20" placeholder="이메일을 입력하세요"></td>
+
+					
+					</tr>
+                    <tr>
+                     <td style="text-align:left;" colspan="3"><h5 style="color: red;" id="passwordCheckMessage"></h5><input class="btn btn-primary" type="submit" value="등록"></td>
+                    
+                    </tr> 				
+				</tbody>
+
+			</table>
+		</form>
+	</div>
+
+	<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="vertical-alignment-helper">
+			<div class="modal-dialog vertical-align-center">
+				<div class="modal-content <%if (messageType.equals("오류 메시지")) out.println("panel-warning");else out.println("panel-success");%>">
+					<div class="modal-header panel-heading">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times</span> 
+							<span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">
+							<%= messageType %>
+						</h4>
+					</div>
+					<div class="modal-body">
+						<%= messageContent %>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="modal fade" id="checkModal" tabindex="-1" role="dialog"aria-hidden="true">
+		<div class="vertical-alignment-helper">
+			<div class="modal-dialog vertical-align-center">
+				<div id="checkType" class="modal-content panel-info">
+					<div class="modal-header panel-heading">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times</span> 
+							<span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">확인 메시지</h4>
+					</div>
+					<div id="checkMessage" class="modal-body">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

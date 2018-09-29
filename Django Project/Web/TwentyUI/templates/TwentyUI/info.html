@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<!--
+	Ion by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+{% load staticfiles %}
+	<head>
+		<title>소개</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="{% static 'js/html5shiv.js' %}"></script><![endif]-->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/skel.min.js' %}"></script>
+		<script src="{% static 'js/skel-layers.min.js' %}"></script>
+		<script src="{% static 'js/init.js' %}"></script>
+
+		<noscript>
+			<link rel="stylesheet" href="{% static 'css/skel.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style-xlarge.css' %}" />
+			<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		</noscript>
+	</head>
+	<body id="top">
+
+		<!-- Header -->
+			<header id="header" class="skel-layers-fixed">
+				<h1><a href="#"></a>Twenty</h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="{% url 'index' %} ">홈</a></li>
+						<li><a href="{% url 'info' %} ">소개</a></li>
+						<li><a href="{% url 'Login' %}">마이 페이지</a></li>
+						<li><a href="{% url 'boderView' %}">게시판</a></li>
+						<li><a href="{% url 'Login' %}" class="button special">로그인</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Main -->
+			<section id="main" class="wrapper style1">
+				<header class="major">
+					<h2>안구 건조증</h2>
+					<p>안구 건조증과 예방법</p>
+				</header>
+				<div class="container">
+					<div class="row">
+						<div class="4u">
+							<section>
+								<h3>안구 건조증이란 ?</h3>
+								<p>안구 건조증이란 눈물이 부족하거나 눈물이 지나치게 증발하거나 눈물 구성성분의 균형이 맞지 않아서 안구 표면이 손상되고 눈이 시리고 자극감, 이물감, 건조감 등의 자극증상을 느끼게 되는 눈의 질환을 말한다. 
+
+노화의 일종으로 보통 40대 이후 환자가 많은 것이 특징이었으나 최근 텔레비전, 스마트폰, 컴퓨터 등의 영향으로 젊은층의 환자가 급증하고 있다.
+</p>
+							
+							</section>
+							<hr/>
+							<section>
+								<h3>안구 건조증 관련 사이트</h3>
+								<ul class="alt">
+									<li><a href="#">하나 안과 병원</a></li>
+									<li><a href="#">한림대 종합 병원</a></li>
+									<li><a href="#">건국대 종합 병원</a></li>
+									<li><a href="#">대한민국 안과 협회</a></li>
+									<li><a href="#">안구 보호 음식</a></li>
+								
+								</ul>
+							</section>
+						</div>
+						<div class="8u skel-cell-important">
+							<section>
+								<h2>안구 건조증 예방법</h2>
+								<a href="#" class="image fit"><img src="{% static 'images/pic03.jpg' %}" alt="" /></a>
+								<p>안구건조증을 예방하는 5가지 생활수칙</p> 
+<p>1. TV나 컴퓨터, 스마트폰 사용을 자제하고, 중간에 휴식시간을 갖는다.</p> 
+<p>2. 안구가 건조하다고 느껴질 때는 인공눈물을 수시로 점안한다. </p>
+<p>3. 겨울철 온풍기 사용을 최대한 자제하고, 바람을 직접 쐬지 않는다. </p>
+<p>4. 실내 온도를 1~2도 정도 낮추고 얇은 옷을 추가로 입는다. </p>
+<p>5. 렌즈보다는 안경을 착용한다.</p>
+
+
+								<p>안구가 자주 건조해진다면 안구 건조증을 의심해볼 수 있다. 가까운 안과에 가서 눈에 맞는 안약을 처방받아 사용해주면 된다. 
+
+약국에서 인공눈물을 사는 것도 좋지만 일회용 인공눈물은 처방을 받아야 하고 보통 안구건조증은 다른 질환에 의한 결과물인 경우가 많으므로 안과를 가는 것이 좋다.
+
+현재로서는 지속적인 관리 외에는 뚜렷한 완치방법이 존재하지 않는다. 눈물의 성분, 기름샘(마이봄샘), 염증 정도, 심리적인 측면, 각막 표면의 감각 및 자율신경 손상 등 원인이 기관적으로 다양하다는 점이 한 몫한다. 특히 기름샘과 각막 신경의 파괴에 따른 안구건조증은 IPL(레이저자극치료)로 기름샘을 자극하는 방법과 악회되는 것을 막는 것 외에는 뚜렷한 방법이 없다. </p>
+							</section>
+						</div>
+					</div>
+				</div>
+			</section>
+
+	</body>
+</html>

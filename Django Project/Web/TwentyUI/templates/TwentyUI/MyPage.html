@@ -1,0 +1,160 @@
+<!DOCTYPE html >
+<html>
+{% load staticfiles %}
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/skel.min.js' %}"></script>
+<script src="{% static 'js/skel-layers.min.js' %}"></script>
+<script src="{% static 'js/init.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+<title>마이페이지</title>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+
+	<noscript>
+			<link rel="stylesheet" href="{% static 'css/skel.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style2.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style-xlarge.css' %}" />
+		</noscript>
+</head>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        {% for context in contexts %}
+        ["1월", {{context.Month.0}}, "DAFC00"],
+        ["2월", {{context.Month.1}}, "7EF400"],
+        ["3월", {{context.Month.2}}, "35F400"],
+        ["4월", {{context.Month.3}}, "00F200"],
+        ["5월", {{context.Month.4}}, "00ED37"],
+        ["6월", {{context.Month.5}}, "00E554"],
+        ["7월", {{context.Month.6}}, "00DB7F"],
+        ["8월", {{context.Month.7}}, "00CE82"],
+        ["9월", {{context.Month.8}}, "00BA85"],
+        ["10월", {{context.Month.9}}, "00AD8A"],
+        ["11월", {{context.Month.10}}, "00A08D"],
+        ["12월", {{context.Month.11}}, "008482"],
+        {% endfor %}
+       
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "월간 그래프",
+        width: 1700,
+        height: 490,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Time', 'Sales'],
+          {% for context in contexts %}
+          ['00시',  {{context.Time.0}}],          ['1시',  {{ context.Time.1 }}],
+          ['2시',  {{ context.Time.2 }}],          ['3시',  {{ context.Time.3 }}],
+          ['4시',  {{ context.Time.4 }}],          ['5시',  {{ context.Time.5 }}],
+          ['6시',  {{ context.Time.6 }}],          ['7시',  {{ context.Time.7 }}],
+          ['8시',  {{ context.Time.8 }}],          ['9시',  {{ context.Time.9 }}],
+          ['10시', {{ context.Time.10 }}],          ['11시', {{ context.Time.11 }}],
+          ['12시', {{ context.Time.12 }}],          ['13시', {{ context.Time.13 }}],
+          ['14시', {{ context.Time.14}}],          ['15시', {{ context.Time.15 }}],
+          ['16시', {{ context.Time.16 }}],          ['17시', {{ context.Time.17 }}],
+          ['18시', {{ context.Time.18 }}],          ['19시', {{ context.Time.19 }}],
+          ['20시', {{ context.Time.20 }}],          ['21시', {{ context.Time.21 }}],
+          ['22시', {{ context.Time.22 }}],          ['23시', {{ context.Time.23 }}]
+          {% endfor %}
+        ]);
+
+        var options = {
+          title: '일간 그래프',
+          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          width: 1000,
+          height: 490,
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+<header id="header" class="skel-layers-fixed">
+				<h1><a href="#"></a>Twenty</h1>
+				<nav id="nav">
+					<ul>
+                        {% for context in contexts %}
+                        {% for n in context.Name %}
+						<li>환영합니다 &nbsp; {{ n.NAME }}  님</li>
+                        {% endfor %}{% endfor %}
+						<li><a href="{% url 'index_login' %} ">홈</a></li>
+						<li><a href="{% url 'info_login' %} ">소개</a></li>
+						<li><a href="{% url 'MyPage' %}">마이 페이지</a></li>
+						<li><a href="{% url 'boderView_login' %}">게시판</a></li>
+						<li><a href="{% url 'index' %}" class="button special">로그아웃</a></li>
+					</ul>
+				</nav>
+			</header>
+			
+<body>
+
+
+
+			
+ <table class="table table-condensed" border="1" >
+                        <thead>
+                           <tr>
+                           <td style="text-align: left" colspan="2"><div id="chart_div" style="width: 100%; height: 500px;"></div></td>
+                           <td>
+                               {% for context in contexts %}
+                               <img src="{{ context.Pic }}" align="right" style="width: 100%; height: 450px;" >
+                               {% endfor %}
+                           </td>
+                           </tr>
+                           </thead>
+                        <tbody rowspan="50">
+                           <tr>
+                           <td>
+                                    
+                            </td>
+                             <td>
+
+                            </td>
+                            <td style="text-align: center">
+                                {% for context in contexts %}
+                                <p>{{ context.Coment }}</p>
+                                {% endfor %}
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+           
+<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+
+
+
+</body>
+</html>

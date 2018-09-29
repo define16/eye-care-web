@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<!--
+	Photon by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+{% load staticfiles %}
+	<head>
+		<meta http-equiv="refresh" content="30">
+		<title>눈깜빡임수 측정합니다</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="{% static 'assets/js/ie/html5shiv.js' %}"></script><![endif]-->
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="{% static 'assets/css/ie8.css' %}" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="{% static 'assets/css/ie9.css' %}" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<section id="header">
+				<div class="inner">
+					<span class="icon major fa-cloud"></span>
+					<h1>안녕하세요<strong>Twenty</strong>, 눈 깜빡임을 측정중입니다 !<br/>
+					중지를 원하시면 <a href="http://html5up.net">버튼을 눌러주세요</a></h1>
+					
+					<ul class="actions">
+						<li><a href="{% url 'index_login' %}" class="button scrolly">중지</a></li>
+					</ul>
+				</div>
+			</section>
+
+		<!-- One -->
+	
+	
+
+		<!-- Four -->
+		 <table class="table" >
+
+	 <tbody style="text-align:center">
+	 {% for context in contexts %}
+	    <tr>
+	      <td>{{context.DATE}} &nbsp; {{context.TIME}} </td>  <td>{{context.COUNT}} </td>
+	    </tr>
+	 {% endfor %}
+
+
+
+	 {% if contexts.0.COUNT < 15 %}
+	 	<br>
+	 	<a style="text-align: center;">	<h3> 위험상태!</h3> </a>
+	 	<audio autoplay="autoplay" src="{% static 'images/sound_button_wrong.wav' %}"></audio>
+
+	 {% endif %}
+	    
+	 </tbody>
+	</table>
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'assets/js/skel.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<!--[if lte IE 8]><script src="{% static 'assets/js/ie/respond.min.js' %}"></script><![endif]-->
+			<script src="{% static 'assets/js/main.js' %}"></script>
+
+	</body>
+</html>

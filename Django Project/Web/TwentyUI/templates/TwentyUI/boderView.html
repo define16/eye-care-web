@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<!--
+	Ion by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+{% load staticfiles %}
+	<head>
+		<title>소개</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="{% static 'js/html5shiv.js' %}"></script><![endif]-->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/skel.min.js' %}"></script>
+		<script src="{% static 'js/skel-layers.min.js' %}"></script>
+		<script src="{% static 'js/init.js' %}?ver=1"></script>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	 	<script src="{% static 'js/bootstrap.js' %}"></script>
+
+		<noscript>
+			<link rel="stylesheet" href="{% static 'css/skel.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style.css' %}?ver=1" />
+			<link rel="stylesheet" href="{% static 'css/style-xlarge.css' %}" />
+		</noscript>
+	</head>
+	<body id="top">
+
+		<!-- Header -->
+			<header id="header" class="skel-layers-fixed">
+				<h1><a href="#"></a>Twenty</h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="{% url 'index' %} ">홈</a></li>
+						<li><a href="{% url 'info' %} ">소개</a></li>
+						<li><a href="{% url 'Login' %}">마이 페이지</a></li>
+						<li><a href="{% url 'boderView' %}">게시판</a></li>
+						<li><a href="{% url 'Login' %}" class="button special">로그인</a></li>
+					</ul>
+				</nav>
+			</header>
+ <table class="table" >
+	 <thead>
+	 <tr>
+	   <th colspan="5"><h4>문의 게시판</h4></th>
+	 </tr>
+	 <tr>
+	    <th style="background-color: #fafafa; color: #000000; width: 70px;"><h5>번호</h5></th>
+	    <th style="background-color: #fafafa; color: #000000;"><h5>제목</h5></th>
+	    <th style="background-color: #fafafa; color: #000000;"><h5>작성자</h5></th>
+	    <th style="background-color: #fafafa; color: #000000; width: 100px;"><h5>작성날짜</h5></th>
+	 </tr>
+	 </thead>
+	 <tbody>
+
+	 {% for context in contexts %}
+	    <tr>
+	      	<td>{{ context.idx }}</td>
+			<td><a href="{% url 'Login' %}"> {{ context.Title }} </a> </td>
+			<td>{{ context.ID }}</td>
+	      	<td>{{ context.DATE }}</td>
+	    </tr>
+	 {% endfor %}
+	    <tr>
+	    <td colspan="5"><a href="{% url 'Login' %}" class="btn btn-primary pull-right" type="submit">문의하기</a></td>
+	    </tr>
+	    
+	 </tbody>
+	</table>
+	
+
+	
+	</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+{% load staticfiles %}
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="{% static 'js/html5shiv.js' %}"></script><![endif]-->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/skel.min.js' %}"></script>
+		<script src="{% static 'js/skel-layers.min.js' %}"></script>
+		<script src="{% static 'js/init.js' %}?ver=1"></script>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	 	<script src="{% static 'js/bootstrap.js' %}"></script>
+
+		<noscript>
+			<link rel="stylesheet" href="{% static 'css/skel.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style.css' %}?ver=1" />
+			<link rel="stylesheet" href="{% static 'css/style-xlarge.css' %}" />
+			
+		</noscript>
+	</head>
+<body>
+<header id="header" class="skel-layers-fixed">
+				<h1><a href="#"></a>Twenty</h1>
+				<nav id="nav">
+					<ul>
+						<li>환영합니다 &nbsp; {{contexts.0.NAME}}  님</li>
+						<li><a href="{% url 'index_login' %} ">홈</a></li>
+						<li><a href="{% url 'info_login' %} ">소개</a></li>
+						<li><a href="{% url 'MyPage' %}">마이 페이지</a></li>
+						<li><a href="{% url 'boderView_login' %}">게시판</a></li>
+						<li><a href="{% url 'index' %}" class="button special">로그아웃</a></li>
+					</ul>
+				</nav>
+			</header>
+<div class="container">
+<table class="table table-bordered">
+    <thead>
+        <h3> 문의 작성 </h3>
+    </thead>
+    <tbody>
+        <form action="{% url 'Write' %}" method="post" name="Write">
+			{% csrf_token %}
+			{{ form|linebreaks }}
+            <tr>
+                <th>제목: </th>
+                <td><input type="text" placeholder="제목을 입력하세요. " name="subject" class="form-control"/></td>
+            </tr>
+			<tr>
+                <th>E_Mail: </th>
+                <td><input type="text" placeholder="메일을 입력하세요. " name="email" class="form-control"/></td>
+            </tr>
+            <tr>
+                <th>내용: </th>
+                <td><textarea cols="10" rows="30" placeholder="내용을 입력하세요. " name="content" class="form-control"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input class="button special" value="등록" type="submit"/>
+                    <a href="#" class="button special" type="cancel" onclick="delchk();">돌아가기</a>
+                </td>
+            </tr>
+        </form>
+    </tbody>
+</table>
+</div>
+</body>
+
+<script type="text/javascript">
+function delchk(){
+    if(confirm("돌아가시겠습니까?")){
+        location.href = "{% url 'boderView_login' %}";
+        return true;
+    } else {
+        return false;
+    }
+}
+</script>
+
+</html>
+
+
