@@ -36,10 +36,17 @@ def main(name) :
         '''
         CascadeClassifier의  detectMultiScale 함수에 grayscale 이미지를 입력하여 얼굴을 검출
         첫 번째 인자인 image는 바로 검출하고자 하는 원본 이미지를 의미
+<<<<<<< HEAD
         두 번째 인자인 scaleFactor는 이미지 피라미드에서 사용되는 scale factor를 의미
         세 번쨰 인자인 minNeighbors는 이미지 피라미드에 의한 여러 스케일의 크기에서 minNeighbors 횟수 이상 검출된 object는 valid하게 검출
         네 번째 인자인 flags는 old cascade 사용시에만 의미를 가지는 파라미터
         다섯 번째 인자인 (minSize, MaxSize)
+=======
+        두 번째 인자인 objects에 검출된 이미지로 채우기
+        세 번쨰 인자인 scaleFactor는 이미지 피라미드에서 사용되는 scale factor를 의미
+        네 번째 인자인 minNeighbors는 이미지 피라미드에 의한 여러 스케일의 크기에서 minNeighbors 횟수 이상 검출된 object는 valid하게 검출
+        다섯 번째 인자인 flags는 old cascade 사용시에만 의미를 가지는 파라미터
+>>>>>>> 5fab148a42a6567f5bb01dd654fdf885c0e5a08b
         '''
 
         if (np.size(faces) > 0):  # 벡터의 크기를 계산
