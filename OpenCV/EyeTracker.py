@@ -36,10 +36,10 @@ def main(name) :
         '''
         CascadeClassifier의  detectMultiScale 함수에 grayscale 이미지를 입력하여 얼굴을 검출
         첫 번째 인자인 image는 바로 검출하고자 하는 원본 이미지를 의미
-        두 번째 인자인 scaleFactor는 이미지 피라미드에서 사용되는 scale factor를 의미
-        세 번쨰 인자인 minNeighbors는 이미지 피라미드에 의한 여러 스케일의 크기에서 minNeighbors 횟수 이상 검출된 object는 valid하게 검출
+        두 번째 인자인 scaleFactor는 이미지크기에서 이미지크기를 얼마나 줄일 것인지 지정하는 매개변수
+        세 번쨰 인자인 minNeighbors는 검출된 이미지 사이의 최소 간격(픽셀)입니다
         네 번째 인자인 flags는 old cascade 사용시에만 의미를 가지는 파라미터
-        다섯 번째 인자인 (minSize, MaxSize)
+        다섯 번째 인자인 (minSize, MaxSize)는 일정 크기 이하나 이상의 얼굴은 처리하지 않고 무시
         '''
 
         if (np.size(faces) > 0):  # 벡터의 크기를 계산
@@ -60,7 +60,7 @@ def main(name) :
                         center = (int(x_eye + 0.5*w_eye), int(y_eye + 0.5*h_eye));
                         radius = int(0.3 * (w_eye + h_eye));
                         color = (255, 0, 255);
-                        thickness = 5;
+                        thickness = 5; # 그려지는 원의 두께
                         cv2.circle(roi_color, center, radius, color, thickness); # 검출된 눈영역에 원을 그림
                 else :
                     if IsBlink :
@@ -69,7 +69,6 @@ def main(name) :
                         blink.time.sleep(0.025);
                         blink.setCount(count)
                         print("count : " , blink.getCount())
-
         else :
             IsBlink = False;
             blink.Pause();
