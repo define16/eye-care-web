@@ -1,4 +1,4 @@
-# Eye_care-Web-Application
+# Eye care Web Application
 Web service for preventive xerophthalmia
 
 # 개발배경
